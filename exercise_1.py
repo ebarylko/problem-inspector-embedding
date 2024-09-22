@@ -17,6 +17,7 @@ from collections import defaultdict
 
 from dwave.system import DWaveSampler, EmbeddingComposite
 import networkx as nx
+import dwave.inspector
 
 import matplotlib
 try:
@@ -71,3 +72,5 @@ for sample, E in sampleset.data(fields=['sample','energy']):
     S0 = [k for k,v in sample.items() if v == 0]
     S1 = [k for k,v in sample.items() if v == 1]
     print('{:>15s}{:>15s}{:^15s}{:^15s}'.format(str(S0),str(S1),str(E),str(int(-1*E))))
+
+dwave.inspector.show(sampleset)
